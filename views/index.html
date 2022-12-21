@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <style>
+      body { margin-left: 100px; margin-right: 100px; padding-bottom: 3rem; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+    </style>
+  </head>
+  <body>
+    <h1>Chat Room Home Page</h1>
+
+    <label>Set Username:</label>
+    <input id="username" type="text" />
+    <br>
+    <br>
+
+    <form id="join-form" action="">
+      <h4 style="padding: 0px; margin: 0px; margin-bottom: 5px">Join/Make Chat Room</h4>
+      <label>Enter new or existing chat room:</label>
+      <input id="join" type="text" />
+      <br>
+      <button>Join/Make</button>
+    </form>
+    
+  </body>
+  <script>
+
+    function getUsername(){
+      var username = document.getElementById('username');
+      if (username.value === ''){
+        username = 'anonymous-'+ Math.floor((Math.random() * 1000000) + 1);
+      } else {
+        username = username.value;
+      }
+      return username
+    }
+
+    function getRoomname(){
+      var room = document.getElementById('join');
+      if (room.value === ''){
+        room = 'room'+ Math.floor((Math.random() * 1000) + 1);
+      } else {
+        room = room.value;
+      }
+      return room
+    }
+
+    var joinForm = document.getElementById('join-form');
+    joinForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const username = getUsername();
+      const roomname = getRoomname();
+      window.location.href = `http://localhost:3000/room?room=${roomname}&username=${username}`;
+    });
+
+  </script>
+</html>
