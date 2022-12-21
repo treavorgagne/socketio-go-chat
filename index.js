@@ -4,11 +4,11 @@ const io = require('socket.io')(http);
 const port = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/views/index.html');
 });
 
 app.get('/room', (req, res) => {
-  res.sendFile(__dirname + '/room.html');
+  res.sendFile(__dirname + '/views/room.html');
 });
 
 io.on('connection', (socket) => {
