@@ -25,8 +25,8 @@ io.on('connection', (socket) => {
   });
 
   // sends message to everyone in the chat
-  socket.on('chat message', (msg) => {
-    io.to(room).emit('chat message', `${username}: ${msg}`);
+  socket.on('send message', (msg) => {
+    io.to(room).emit('receive message', `${username}: ${msg}`);
   });
 
   // events to trigger when socket disconnects
