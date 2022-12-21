@@ -20,6 +20,6 @@ When a user sends a message.
 
 Then the users client side code will emit the `send message` event containing the msg and name data.
 
-Then the server which monitors for `send message` events will broadcast/emit the `received message` event for the current chat room.
+Then the server which monitors for the `send message` event will broadcast/emit the `received message` event for the current chat room.
 
-Then all the other clients which monitor for `received message` event in the chat room will display the msg.
+Then all the other clients which monitor for the `received message` event in the chat room will display the msg.
