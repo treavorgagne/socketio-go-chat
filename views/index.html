@@ -50,7 +50,7 @@
       e.preventDefault();
       const username = getUsername();
       const roomname = getRoomname();
-      window.location.href = `http://localhost:3000/room?room=${roomname}&username=${username}`;
+      window.location.href = `${window.location.href}/room?room=${roomname}&username=${username}`;
     });
 
   </script>

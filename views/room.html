@@ -38,7 +38,6 @@
       title.innerText = title.innerText +" "+ room;
 
       // let everyone know you've entered the chat
-      console.log("joining: ", name, room);
       socket.emit('new user', name, room);
 
       form.addEventListener('submit', function(e) {
