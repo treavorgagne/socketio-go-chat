@@ -43,7 +43,7 @@
       form.addEventListener('submit', function(e) {
         e.preventDefault();
         if (input.value) {
-          socket.emit('send message', input.value, name);
+          socket.emit('send message', input.value, name, room);
           input.value = '';
         }
       });

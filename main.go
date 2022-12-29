@@ -20,30 +20,24 @@ func main() {
         http.ServeFile(w, r, "./views/room.html")
     })
 
-	var room string
-	var username string
-
 	server := socketio.NewServer(nil)
 	server.OnConnect("/", func(s socketio.Conn) error {
 		s.SetContext("")
+
+		server.OnEvent("/", "new user", func(s socketio.Conn, name string, room string) {
+			server.BroadcastToRoom("/", room, "chat sub msg", name + " entered the chat")
+			s.Join(room)
+		})
+
+		// sends message to everyone in the chat
+		server.OnEvent("/", "send message", func(s socketio.Conn, msg string, name string, room string) {
+			server.BroadcastToRoom("/", room, "receive message", name +": "+ msg)
+		});
+
+		server.OnDisconnect("/", func(s socketio.Conn, reason string) {
+		})
+
 		return nil
-	})
-
-	server.OnEvent("/", "new user", func(s socketio.Conn, name string, newroom string) {
-		room = newroom
-		username = name
-		s.Join(room)
-		server.BroadcastToRoom("/", room, "chat sub msg", username + " entered the chat")
-	})
-
-	// sends message to everyone in the chat
-	server.OnEvent("/", "send message", func(s socketio.Conn, msg string) {
-		server.BroadcastToRoom("/", room, "receive message", username +": "+ msg)
-	});
-
-	server.OnDisconnect("/", func(s socketio.Conn, reason string) {
-		server.BroadcastToRoom("/", room, "chat sub msg", username + " left the chat")
-		fmt.Println("closed:", reason, room, username)
 	})
 
 	go server.Serve()
