@@ -21,11 +21,9 @@
     <form id="form" action="">
       <input id="input" autocomplete="off" /><button>Send</button>
     </form>
-    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.0.0.js"></script>
 
     <script>
-      var socket = io();
-
       var url = new URL(window.location.href);
       var name = url.searchParams.get("username");
       var room = url.searchParams.get("room");
@@ -36,6 +34,8 @@
       var title = document.getElementById('chat-title');
 
       title.innerText = title.innerText +" "+ room;
+
+      var socket = io();
 
       // let everyone know you've entered the chat
       socket.emit('new user', name, room);

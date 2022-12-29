@@ -1,6 +1,6 @@
 # socketio-chat-app
 
-This `express` application was a small project used to get me more familiar with [socket.io](https://socket.io). To make this, I used socket.io in `Node.js`, `HTML`, and `javascript`. Lastely, this project is hosted on a free heroku dyno instance which deploys automatically on `git push -u origin main` calls.
+This `express` application was a small project used to get me more familiar with [socket.io](https://socket.io). To make this, I used socket.io in `Golang`, `HTML`, and `javascript`. Lastely, this project is hosted on a free heroku dyno instance which deploys automatically on `git push -u origin main` calls.
 
 ## IMPLEMENTATION
 
