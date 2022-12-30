@@ -1,1 +1,1 @@
-web: npm start
+web: go run main.go
